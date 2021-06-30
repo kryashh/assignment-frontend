@@ -1,0 +1,79 @@
+<table class="table table-bordered w-50">
+  <thead>
+    <th>Username</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users">
+      <td>{{item.username}}</td>
+      <td>{{item.phoneNumber}}</td>
+      <td>{{item.address}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="isRoleAdmin">
+  <button class="btn btn-primary" (click)="addUsers()">Add User</button>
+</div>
+
+<div *ngIf="addUser">
+  <div class="login-form m-3 p-3">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form">
+      <div class="form-group">
+        <label> Username :</label>
+        <input type="text" placeholder="Username" class="form-control" name="username" formControlName="username">
+      </div>
+      <div class="form-group pt-3">
+        <label> Password :</label>
+        <input type="password" placeholder="Password" class="form-control" name="password" formControlName="password">
+      </div>
+      <div class="form-group pt-3">
+        <label> Address :</label>
+        <textarea placeholder="Address" class="form-control" name="address" formControlName="address"></textarea>
+      </div>
+      <div class="form-group pt-3">
+        <label> Phone Number :</label>
+        <input type="number" placeholder="Phone Number" class="form-control" name="phoneNumber"
+          formControlName="phoneNumber">
+      </div>
+      <div class="form-group pt-3">
+        <label for="gender">Role:</label>
+        <div>
+          <input id="Admin" type="radio" value="Admin" name="role" formControlName="role">
+          <label for="male">Admin</label>
+        </div>
+
+        <div>
+          <input id="Normal" type="radio" value="Normal" name="role" formControlName="role">
+          <label for="female">Normal</label>
+        </div>
+      </div>
+      <div class="pt-4">
+        <button class="btn btn-sm btn-primary">SUBMIT</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- Modall -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div> -->
+      <div class="modal-body">
+        <p>User created successfully.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
